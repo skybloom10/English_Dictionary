@@ -1,28 +1,41 @@
-import java.util.Objects;
+package team10;
 
 public class Word {
-    String eng;
-    String kor;
+    private String eng;
+    private String kor;
+    private int wrongCount;
 
     public Word(String eng, String kor) {
-        super();
         this.eng = eng;
         this.kor = kor;
+        this.wrongCount = 0;
     }
+
+    public String getEng() { return eng; }
+    public void setEng(String eng) { this.eng = eng; }
+
+    public String getKor() { return kor; }
+    public void setKor(String kor) { this.kor = kor; }
+
+    public int getWrongCount() { return wrongCount; }
+    public void increaseWrongCount() { wrongCount++; }
 
     @Override
     public String toString() {
-        return eng + " : " + kor;
+        return eng + "\t" + kor;
     }
 
+    // eng тэнцүү байвал нэг үг гэж үзнэ (contains() ажиллуулахын тулд)
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Word word)) return false;
-        return Objects.equals(eng, word.eng) && Objects.equals(kor, word.kor);
+        if (this == o) return true;
+        if (!(o instanceof Word)) return false;
+        Word other = (Word) o;
+        return eng != null && eng.equalsIgnoreCase(other.eng);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(eng, kor);
+        return eng == null ? 0 : eng.toLowerCase().hashCode();
     }
 }

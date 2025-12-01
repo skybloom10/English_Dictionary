@@ -72,7 +72,6 @@ Merge	병합
 Split	분할
 Train	훈련
 Group	그룹
-Proof	증거
 Trend	경향
 State	상태
 Trait	특성
